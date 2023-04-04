@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HQbr2b5SMTi8mf2au9DrhMWdAknh1XdL7skZ+BdUFQa0Ska/ZwklHlDVMbrvBmw8FE+lStNSlaygRlxGCBbDqQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lars_\\VisualStudio\\FootballLeagues\\FootballLeagues.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lars_\\.nuget\\packages\\csvhelper\\27.2.1\\csvhelper.27.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

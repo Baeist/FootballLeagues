@@ -1,0 +1,17 @@
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\FootballLeagues.exe
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\FootballLeagues.deps.json
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\FootballLeagues.runtimeconfig.json
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\FootballLeagues.dll
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\FootballLeagues.pdb
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.csproj.AssemblyReference.cache
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.AssemblyInfoInputs.cache
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.AssemblyInfo.cs
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.csproj.CoreCompileInputs.cache
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.dll
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\refint\FootballLeagues.dll
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.pdb
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.genruntimeconfig.cache
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\ref\FootballLeagues.dll
+C:\Users\lars_\VisualStudio\FootballLeagues\bin\Debug\net7.0\CsvHelper.dll
+C:\Users\lars_\VisualStudio\FootballLeagues\obj\Debug\net7.0\FootballLeagues.csproj.CopyComplete
