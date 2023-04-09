@@ -14,6 +14,7 @@ class Team{
     public int gFor {get; set;} = 0;
     public int gAgainst {get; set;} = 0;
     public int points {get; set;} = 0;
+    public int goalDifference {get; set;} = 0;
 
      public Team UpdateResults(Result result, Team team){
 
@@ -55,7 +56,9 @@ class Team{
         return team;
      }   
 
-
+     public void calculateGoalDifference(Team team){
+        team.goalDifference = team.gFor - team.gAgainst;
+     }   
 
      public override string ToString(){
         

@@ -84,7 +84,11 @@ class FileHandler{
 
         }
         // Console.WriteLine(teamsToReturn[0].ToString());
-        
+        for(int v = 0; v < teamsToReturn.Count; v++){
+            checkTeam.calculateGoalDifference(teamsToReturn[v]);
+        }    
+
+
         return teamsToReturn;
     }
 
