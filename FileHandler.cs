@@ -92,7 +92,7 @@ class FileHandler{
         return teamsToReturn;
     }
 
-    public string readSetupFromCSV(){
+    public Setup readSetupFromCSV(){
         
         Setup setup = new Setup();
 
@@ -108,8 +108,8 @@ class FileHandler{
             var temp = csv.GetRecords<Setup>();
             setup = temp.ElementAt(0);
         }
-        string returnSetup = setup.ToString();
         
-        return returnSetup;
+        
+        return setup;
     }
 }
