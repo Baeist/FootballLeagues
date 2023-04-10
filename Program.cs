@@ -1,55 +1,38 @@
-﻿using System;
-
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 class Program{
 
 public static void Main(string[] args){
 
-    // choose number of rounds here
+    // choose number of rounds here, round data will generate automatically and old data will delete up to a default of 33 rounds
+    // setup and teams needs to be done manually
     int rounds = 2;
 
     FileHandler fileHandler = new FileHandler();
+    Team team = new Team();
     List<Team> teams = new List<Team>();
     List<Team> sortedTeams = new List<Team>();
-    Setup setup = fileHandler.readSetupFromCSV();
+
     Console.WriteLine("Program is running");
-    
+
+    fileHandler.deleteFiles();
+
+    Setup setup = fileHandler.readSetupFromCSV();
     string writeSetup = setup.ToString();
+    
     Console.WriteLine(writeSetup);
+
+    fileHandler.createRounds(rounds);
     teams = fileHandler.updateResultsForRounds(rounds);
     
-    var enumerableTeams = teams.OrderBy(teams => teams.points).ThenBy(teams => teams.goalDifference).ThenBy(teams => teams.abbreviation); 
+    sortedTeams = team.sortTeams(teams);
     
-    for(int i = 0; i < 12; i++){
-
-        Team tempTeam = enumerableTeams.ElementAt(i);
-       
-        sortedTeams.Insert(0, tempTeam);
+    team.printTable(sortedTeams);
     }
-    
-    for(int g = 0; g < sortedTeams.Count; g++){
-
-        if(g <= (setup.EL + setup.CL + setup.CONF -1)){
-            Console.ForegroundColor = ConsoleColor.Magenta;
-        }
-        if(g <= (setup.EL + setup.CL -1)){
-            Console.ForegroundColor = ConsoleColor.Yellow;
-        }
-        if(g <= (setup.CL -1)){
-            Console.ForegroundColor = ConsoleColor.Blue;
-        }
-        if(g <= (setup.Promotion -1) && setup.Promotion > 0){
-            Console.ForegroundColor = ConsoleColor.Green;
-        }
-        if(g >= sortedTeams.Count - setup.Relegation){
-            Console.ForegroundColor = ConsoleColor.Red;
-        }
-
-        Console.WriteLine(sortedTeams[g].ToString());
-
-        Console.ForegroundColor = ConsoleColor.White;        
-        }
-
-
-    }
-
 }

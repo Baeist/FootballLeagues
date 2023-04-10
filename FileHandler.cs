@@ -1,11 +1,15 @@
 using CsvHelper;
 using CsvHelper.Configuration;
 using System.Globalization;
- 
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 class FileHandler{
 
     private Team checkTeam = new Team();
-    
+    public Random rng = new Random(); 
     public List<Team> readTeamsFromCSV(){
         
         List<Team> teamsToReturn = new List<Team>();
@@ -111,5 +115,67 @@ class FileHandler{
         
         
         return setup;
+    }
+
+    public void createRounds(int roundNumber){
+
+        List<Team> teams = readTeamsFromCSV();
+        
+        for(int i = 0; i < roundNumber; i++){
+        
+        List<Result> results = new List<Result>();
+        
+        teams = shuffle(teams);
+
+        for(int j = 0; j < 6; j++){
+          Result tempResult = new Result();
+
+          tempResult.abbreviationawayteam = teams[j].abbreviation;
+          tempResult.abbreviationhometeam = teams[j + 6].abbreviation;
+          tempResult.awaygoals = rng.Next(0, 4);
+          tempResult.homegoals = rng.Next(0, 4);
+          tempResult.pointsaway = 1;
+          tempResult.pointshome = 1;
+               if(tempResult.homegoals > tempResult.awaygoals){
+                  tempResult.pointshome = 3;
+                   tempResult.pointsaway = 0;
+               }
+               if(tempResult.awaygoals > tempResult.homegoals){
+                   tempResult.pointshome = 0;
+                   tempResult.pointsaway = 3;
+               }
+          results.Add(tempResult);
+          
+        }
+
+        string fileName = "CSVtest/round" + (i + 1) + ".csv";
+        var writer = new StreamWriter(fileName);
+        var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+        
+        csv.WriteRecords(results);
+        
+        writer.Close();
+        }
+    }
+    public List<Team> shuffle(List<Team> list)  
+    {  
+        int n = list.Count;  
+        while (n > 1) {  
+        n--;  
+        int k = rng.Next(n + 1);  
+        Team tempTeam = list[k];  
+        list[k] = list[n];  
+        list[n] = tempTeam;  
+        }  
+        return list;
+    }
+    
+    public void deleteFiles(int rounds = 33){
+
+        for(int i = 0; i < rounds; i++){
+           string path =  "CSVtest/round" + (i + 1) + ".csv";
+            File.Delete(path);
+        }
+
     }
 }
