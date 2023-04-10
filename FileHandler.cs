@@ -13,7 +13,7 @@ class FileHandler{
     public List<Team> readTeamsFromCSV(){
         
         List<Team> teamsToReturn = new List<Team>();
-
+        try{
         var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
           Delimiter = ",",
@@ -31,9 +31,10 @@ class FileHandler{
                 
                 Team test = teams.ElementAt(0);
                 teamsToReturn.Add(test);   
-                // Console.WriteLine(teamsToReturn[i].ToString());
-            }
-            
+                }
+        }
+        }catch(Exception e){
+            Console.WriteLine("An error occured reading the teams file: " + e);
         }
         return teamsToReturn;
     }
@@ -76,30 +77,23 @@ class FileHandler{
                 if(teamsToReturn[t].abbreviation == updateResultsFromList[d].abbreviationawayteam || teamsToReturn[t].abbreviation == updateResultsFromList[d].abbreviationhometeam){
 
                     checkTeam.UpdateResults(updateResultsFromList[d], teamsToReturn[t]);
-                  //  Console.WriteLine(t + " " + d);
-                  //  Console.WriteLine(checkTeam.UpdateResults(updateResultsFromList[d], teamsToReturn[t]).ToString());
-                  //  teamsToReturn.Insert(t, checkTeam.UpdateResults(updateResultsFromList[d], teamsToReturn[t]));
-                  //  teamsToReturn.Insert(t, checkTeam.UpdateResults(updateResultsFromList[d], teamsToReturn[t]));
-                    
+                                     
                 }
 
 
             }
 
         }
-        // Console.WriteLine(teamsToReturn[0].ToString());
-        for(int v = 0; v < teamsToReturn.Count; v++){
-            checkTeam.calculateGoalDifference(teamsToReturn[v]);
+            for(int v = 0; v < teamsToReturn.Count; v++){
+                checkTeam.calculateGoalDifference(teamsToReturn[v]);
         }    
-
-
         return teamsToReturn;
     }
 
     public Setup readSetupFromCSV(){
         
         Setup setup = new Setup();
-
+        try{
         var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
           Delimiter = ",",
@@ -113,7 +107,9 @@ class FileHandler{
             setup = temp.ElementAt(0);
         }
         
-        
+        }catch(Exception e){
+            Console.WriteLine("An error occured reading the setup file: " + e);
+        }
         return setup;
     }
 
@@ -121,6 +117,7 @@ class FileHandler{
 
         List<Team> teams = readTeamsFromCSV();
         
+        try{
         for(int i = 0; i < roundNumber; i++){
         
         List<Result> results = new List<Result>();
@@ -155,6 +152,9 @@ class FileHandler{
         csv.WriteRecords(results);
         
         writer.Close();
+        }
+        }catch(Exception e){
+            Console.WriteLine("Something went wrong when creating rounds: " + e);
         }
     }
     public List<Team> shuffle(List<Team> list)  

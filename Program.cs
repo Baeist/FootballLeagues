@@ -10,9 +10,10 @@ class Program{
 
 public static void Main(string[] args){
 
-    // choose number of rounds here, round data will generate automatically and old data will delete up to a default of 33 rounds
+    // configure the number of rounds, round data will generate automatically and old data will delete up to a default of 33 rounds
     // setup and teams needs to be done manually
-    int rounds = 2;
+       
+    int rounds = 3; // Configure this number
 
     FileHandler fileHandler = new FileHandler();
     Team team = new Team();
@@ -21,7 +22,7 @@ public static void Main(string[] args){
 
     Console.WriteLine("Program is running");
 
-    fileHandler.deleteFiles();
+    fileHandler.deleteFiles(); // insert any number as argument here to delete up to any number of round files
 
     Setup setup = fileHandler.readSetupFromCSV();
     string writeSetup = setup.ToString();
